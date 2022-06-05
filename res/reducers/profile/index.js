@@ -1,0 +1,36 @@
+import { CHANGE_PASSWORD, UPDATE_PROFILE } from '../../actions/ProfileAction';
+
+const initialState = {
+  updateProfileLoading: false,
+  updateProfileResult: false,
+  updateProfileError: false,
+
+  changePasswordLoading: false,
+  changePasswordResult: false,
+  changePasswordError: false,
+};
+
+
+export default function (state = initialState, action) {
+  switch (action.type) {
+    case UPDATE_PROFILE:
+      console.log('UPDATE_PROFILE >>> ', action);
+      return {
+        ...state,
+        updateProfileLoading: action.payload.loading,
+        updateProfileResult: action.payload.data,
+        updateProfileError: action.payload.errorMessage,
+      };
+
+      case CHANGE_PASSWORD:
+      console.log('CHANGE_PASSWORD >>> ', action);
+      return {
+        ...state,
+        changePasswordLoading: action.payload.loading,
+        changePasswordResult: action.payload.data,
+        changePasswordError: action.payload.errorMessage,
+      };
+    default:
+      return state;
+  }
+}
